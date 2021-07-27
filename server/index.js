@@ -3,9 +3,10 @@ const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 
 const {User} = require('./models/User');
-const config = require('./config/key')
+const config = require('./config/key');
+const {auth} = require('./middleware/auth');
 
-const port = 3000;
+const port = 5000;
 const app = express();
 
 // application/json
@@ -26,7 +27,9 @@ mongoose.connect( config.mongoURI, {
 
 app.get('/', (req, res) => res.send('Hello World! hihi'));
 
-app.post('/register', (req, res) => {
+app.get('/api/hello', (req, res) => res.send('get success1!!'));
+
+app.post('/api/users/register', (req, res) => {
     // register user info to DB
     const user = new User(req.body);
 
@@ -36,7 +39,7 @@ app.post('/register', (req, res) => {
     });
 });
 
-app.post('/login', (req, res) => {
+app.post('/api/users/login', (req, res) => {
     // 1. check if there is the same email address in DB
     // 2. if there is, check password
     // 3. if it correct, create token
@@ -64,6 +67,32 @@ app.post('/login', (req, res) => {
             })
         })
         
+    })
+})
+
+app.get('/api/users/auth', auth, (req, res) => {
+    // middleware 통과 -> authentcation success
+    res.status(200).json({
+        _id: req.user._id,
+        isAdmin: req.user.role === 0 ? false: true, // admin != 0
+        isAuth: true,
+        email: req.user.email,
+        name: req.user.name,
+        lastName: req.user.lastName,
+        role: req.user.role,
+        image: req.user.image
+    });
+})
+
+app.get('/api/users/logout', auth, (req, res) => {
+    User.findOneAndUpdate({_id: req.user._id}, {token: ""}, (err, user) => {
+        if(err) return res.json({
+            success: false,
+            err
+        });
+        return res.status(200).send({
+            success: true
+        });
     })
 })
 
