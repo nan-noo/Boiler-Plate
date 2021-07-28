@@ -27,15 +27,15 @@ mongoose.connect( config.mongoURI, {
 
 app.get('/', (req, res) => res.send('Hello World! hihi'));
 
-app.get('/api/hello', (req, res) => res.send('get success1!!'));
+app.get('/api/hello', (req, res) => res.send('welcome!!'));
 
 app.post('/api/users/register', (req, res) => {
     // register user info to DB
     const user = new User(req.body);
 
     user.save((err, doc) => {
-        if(err) return res.json({success: false, err})
-        return res.status(200).json({success: true})
+        if(err) return res.json({registerSuccess: false, err})
+        return res.status(200).json({registerSuccess: true})
     });
 });
 
@@ -87,11 +87,11 @@ app.get('/api/users/auth', auth, (req, res) => {
 app.get('/api/users/logout', auth, (req, res) => {
     User.findOneAndUpdate({_id: req.user._id}, {token: ""}, (err, user) => {
         if(err) return res.json({
-            success: false,
+            logoutSuccess: false,
             err
         });
         return res.status(200).send({
-            success: true
+            logoutSuccess: true
         });
     })
 })

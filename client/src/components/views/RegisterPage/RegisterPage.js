@@ -39,11 +39,11 @@ function RegisterPage(props) {
         }
         dispatch(registerUser(body))
             .then(response => {
-                if(response.payload.success){
+                if(response.payload.registerSuccess){
                     props.history.push('/login'); // landingPage로 이동
                 }
                 else{
-                    alert('Error');
+                    alert('Failed to sign up');
                 }
             }); // Dispatch(action)
     };
@@ -77,4 +77,4 @@ function RegisterPage(props) {
     )
 }
 
-export default RegisterPage
+export default RegisterPage;

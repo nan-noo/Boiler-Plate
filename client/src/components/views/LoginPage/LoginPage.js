@@ -28,7 +28,7 @@ function LoginPage(props) {
                     props.history.push('/'); // landingPage로 이동
                 }
                 else{
-                    alert('Error');
+                    alert('Failed to sign in');
                 }
             }); // Dispatch(action)
     };
@@ -58,4 +58,4 @@ function LoginPage(props) {
     )
 }
 
-export default LoginPage
+export default LoginPage;
