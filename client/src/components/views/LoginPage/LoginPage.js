@@ -2,6 +2,11 @@ import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
 import {loginUser} from '../../../_actions/user_actions';
 
+import {Button, Form, Input, Typography} from 'antd';
+import {MailOutlined, LockOutlined} from '@ant-design/icons';
+
+const {Title} = Typography;
+
 function LoginPage(props) {
     const dispatch = useDispatch();
     const [Inputs, setInputs] = useState({
@@ -39,20 +44,37 @@ function LoginPage(props) {
             alignItems: 'center',
             width: '100%',
             height: '100vh'
-        }}>
-            <form style={{
-                display: 'flex',
-                flexDirection: 'column'
-            }}
-                onSubmit={onSubmitHandler}
-            >
-                <label>Email</label>
-                <input type="email" name="email" value={email} onChange={onInputsHandler} />
-                <label>Password</label>
-                <input type="password" name="password" value={password} onChange={onInputsHandler} />
-                <br/>
-                <button type="submit">Login</button>
-            </form>
+        }}
+            className="app"
+        >   
+            <div>
+                <Title level={3} style={{textAlign: 'center'}}>Log In</Title>
+                <form style={{width: '350px'}} onSubmit={onSubmitHandler}>
+                    <Form.Item required>
+                        <Input
+                            id="email"
+                            prefix={<MailOutlined style={{color: 'rgba(0,0,0,.25'}}/>}
+                            placeholder="Enter your Email"
+                            type="email"
+                            value={email}
+                            name="email"
+                            onChange={onInputsHandler}
+                        />
+                    </Form.Item>
+                    <Form.Item required>
+                        <Input
+                            id="password"
+                            prefix={<LockOutlined style={{color: 'rgba(0,0,0,.25'}}/>}
+                            placeholder="Enter your Password"
+                            type="password"
+                            value={password}
+                            name="password"
+                            onChange={onInputsHandler}
+                        />
+                    </Form.Item>
+                    <Button type="primary" htmlType="submit" style={{minWidth: '100%'}}>Login</Button>
+                </form>
+            </div>
         </div>
     )
 }
