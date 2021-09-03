@@ -10,17 +10,6 @@ import {MailOutlined, LockOutlined, EyeInvisibleOutlined, EyeTwoTone,} from '@an
 
 const {Title} = Typography;
 
-const formItemLayout = {
-    labelCol: {
-        xs: {span: 24},
-        sm: {span: 8},
-    },
-    wrapperCol: {
-        xs: {span: 32},
-        sm: {span: 24},
-    }
-};
-
 function LoginPage(props) {
     const dispatch = useDispatch();
     const [RememberMe, setRememberMe] = useState(localStorage.getItem('rememberMe') ? true : false);
@@ -30,8 +19,8 @@ function LoginPage(props) {
         password: '',
     };
     const validationSchema = Yup.object().shape({
-        email: Yup.string().email('올바른 이메일 주소가 아닙니다.').required('필수 항목입니다.'),
-        password: Yup.string().min(5, '최소 5글자여야 합니다.').required('필수 항목입니다.'),
+        email: Yup.string().email('올바른 이메일 주소가 아닙니다.'),
+        password: Yup.string().min(5, '최소 5글자여야 합니다.'),
     });
 
     const onSubmit = (values, {setSubmitting}) => {
@@ -78,9 +67,9 @@ function LoginPage(props) {
                         alignItems: 'center',
                         height: '100vh'
                     }}>   
-                        <Form style={{width: '350px'}} onSubmit={handleSubmit} {...formItemLayout}>
+                        <Form style={{width: '350px'}} onSubmit={handleSubmit}>
                             <Title level={3} style={{textAlign: 'center'}}>Log In</Title>
-                            <Form.Item required>
+                            <Form.Item>
                                 <Input
                                     id="email"
                                     placeholder="Enter your email"
@@ -99,7 +88,7 @@ function LoginPage(props) {
                                     <div className="input-feedback">{errors.email}</div>
                                 )}
                             </Form.Item>
-                            <Form.Item required>
+                            <Form.Item>
                                 <Input.Password
                                     id="password"
                                     prefix={<LockOutlined style={{color: 'rgba(0,0,0,.25'}}/>}
@@ -120,7 +109,9 @@ function LoginPage(props) {
                             </Form.Item>
 
                             <Form.Item>
-                                <Checkbox id="rememberMe" onChange={() => setRememberMe(!RememberMe)} style={{margin: '2px'}} checked={RememberMe}>remember Me</Checkbox>
+                                <Checkbox id="rememberMe" onChange={() => setRememberMe(!RememberMe)} checked={RememberMe} 
+                                style={{margin: '2px', color: 'rgba(0,0,0,.50)'}} 
+                                >remember Me</Checkbox>
                                 <Button type="primary" onClick={handleSubmit} disabled={isSubmitting} style={{minWidth: '100%'}}>Login</Button>
                                 <div style={{color: 'rgba(0,0,0,.50)', fontStyle: 'italic', marginTop: '5px'}}>
                                     New here? 
