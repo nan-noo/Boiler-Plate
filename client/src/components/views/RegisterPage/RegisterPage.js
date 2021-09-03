@@ -182,7 +182,6 @@ function RegisterPage(props) {
                                     id="confirmPassword"
                                     prefix={<UnlockOutlined style={{color: 'rgba(0,0,0,.25'}}/>}
                                     placeholder="Confirm Password"
-                                    type="password"
                                     value={values.confirmPassword}
                                     iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
                                     onChange={handleChange}
