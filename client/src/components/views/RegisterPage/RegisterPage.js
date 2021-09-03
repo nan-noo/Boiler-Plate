@@ -52,7 +52,7 @@ function RegisterPage(props) {
         lastName: Yup.string().required('필수 항목입니다.'),
         email: Yup.string().email('올바른 이메일 주소가 아닙니다.').required('필수 항목입니다.'),
         password: Yup.string().min(5, '최소 5글자여야 합니다.').required('필수 항목입니다.'),
-        confirmPassword: Yup.string().oneOf([Yup.ref('password'), null], '일치하지 않습니다.').required('필수 항목입니다.'),
+        confirmPassword: Yup.string().oneOf([Yup.ref('password'), null], '비밀번호가 일치하지 않습니다.').required('필수 항목입니다.'),
     });
 
     const onSubmit = (values, {setSubmitting}) => {
@@ -158,9 +158,7 @@ function RegisterPage(props) {
                                     <div className="input-feedback">{errors.lastName}</div>
                                 )}
                             </Form.Item>
-                            <Form.Item required label="Password" hasFeedback
-                                validateStatus={errors.password && touched.password ? "error" : "success"}
-                            >
+                            <Form.Item required label="Password">
                                 <Input.Password
                                     id="password"
                                     prefix={<LockOutlined style={{color: 'rgba(0,0,0,.25'}}/>}
@@ -179,7 +177,7 @@ function RegisterPage(props) {
                                     <div className="input-feedback">{errors.password}</div>
                                 )}
                             </Form.Item>
-                            <Form.Item required label="Confirm PW" hasFeedback>
+                            <Form.Item required label="Confirm PW">
                                 <Input.Password
                                     id="confirmPassword"
                                     prefix={<UnlockOutlined style={{color: 'rgba(0,0,0,.25'}}/>}
