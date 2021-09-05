@@ -4,8 +4,6 @@ import {withRouter} from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux';
 import { logoutUser } from '../../../../_actions/user_actions';
 
-const MenuItem = Menu.Item;
-
 function RightMenu(props) {
     const user = useSelector(state => state.user); // a hook to access redux store's state // 여기선 root의 user에 access
     const dispatch = useDispatch();
@@ -25,21 +23,21 @@ function RightMenu(props) {
     if(user.userData && !user.userData.isAuth){
         return (
             <Menu mode={props.mode}>
-                <MenuItem key="mail">
+                <Menu.Item key="login">
                     <a href="/login">Sign in</a>
-                </MenuItem>
-                <MenuItem key="app">
+                </Menu.Item>
+                <Menu.Item key="register">
                     <a href="/register">Sign up</a>
-                </MenuItem>
+                </Menu.Item>
             </Menu>
         )
     }
     else {
         return (
             <Menu mode={props.mode}>
-                <MenuItem key="logout">
+                <Menu.Item key="logout">
                     <a onClick={logoutHandler}>Log out</a>
-                </MenuItem>
+                </Menu.Item>
             </Menu>
         )
     }     
