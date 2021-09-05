@@ -20,9 +20,10 @@ function RightMenu(props) {
             })
     }
 
-    if(user.userData && !user.userData.isAuth){
-        return (
-            <Menu mode={props.mode}>
+    return (
+        <>
+         {user.userData && !user.userData.isAuth
+            ? <Menu mode={props.mode}>
                 <Menu.Item key="login">
                     <a href="/login">Sign in</a>
                 </Menu.Item>
@@ -30,17 +31,14 @@ function RightMenu(props) {
                     <a href="/register">Sign up</a>
                 </Menu.Item>
             </Menu>
-        )
-    }
-    else {
-        return (
-            <Menu mode={props.mode}>
+            : <Menu mode={props.mode}>
                 <Menu.Item key="logout">
                     <a onClick={logoutHandler}>Log out</a>
                 </Menu.Item>
             </Menu>
-        )
-    }     
+         }
+        </>
+    );   
 }
 
 export default withRouter(RightMenu);
