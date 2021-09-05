@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {BrowserRouter} from 'react-router-dom';
 import './index.css';
 import App from './components/App';
 import reportWebVitals from './reportWebVitals';
@@ -9,22 +10,25 @@ import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 import { applyMiddleware, createStore } from 'redux';
 import promiseMiddleware from 'redux-promise';
 import ReduxThunk from 'redux-thunk';
-import Reducer from './_reducers/index'
+import Reducer from './_reducers/root_reducer';
 
 // 그냥 createStore만 하면 객체만 받을 수 있기 때문에 promise, function을 받게 해주는 middleware와 함께 사용
 const createStoreWithMiddleware = applyMiddleware(promiseMiddleware, ReduxThunk)(createStore);
 
 ReactDOM.render(
-  <Provider
-    store={createStoreWithMiddleware(Reducer, 
-        window.__REDUX_DEVTOOLS_EXTENSION__ &&
-        window.__REDUX_DEVTOOLS_EXTENSION__() // redux를 편하게 사용하기 위한 extension
-      )}
-  >
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  </Provider>,
+  <React.StrictMode>
+    <Provider
+      store={createStoreWithMiddleware(
+          Reducer, 
+          window.__REDUX_DEVTOOLS_EXTENSION__ &&
+          window.__REDUX_DEVTOOLS_EXTENSION__() // redux를 편하게 사용하기 위한 extension
+        )}
+    >
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>
+  </React.StrictMode>,
   document.getElementById('root') // id root에 App component를 render
 );
 

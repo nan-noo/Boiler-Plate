@@ -1,9 +1,5 @@
 import React, {Suspense} from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from "react-router-dom";
+import {Switch, Route} from "react-router-dom";
 
 import LandingPage from './views/LandingPage/LandingPage';
 import LoginPage from './views/LoginPage/LoginPage';
@@ -19,7 +15,6 @@ import Auth from '../hoc/auth';
 function App() {
   return (
     <Suspense fallback={<h1>Loading profile...</h1>}>
-      <Router>
         <NavBar/>
         <div style={{
           paddingTop: '69px',
@@ -32,7 +27,6 @@ function App() {
           </Switch>
         </div>
         <Footer/>
-      </Router>
     </Suspense> 
   );
 }

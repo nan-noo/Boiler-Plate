@@ -61,12 +61,7 @@ function LoginPage(props) {
                 } = props;
 
                 return (
-                    <div style={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        height: '100vh'
-                    }}>   
+                    <div className="app">   
                         <Form style={{width: '350px'}} onSubmit={handleSubmit}>
                             <Title level={3} style={{textAlign: 'center'}}>Log In</Title>
                             <Form.Item>
