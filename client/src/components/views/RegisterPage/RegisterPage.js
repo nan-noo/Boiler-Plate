@@ -19,8 +19,8 @@ const formItemLayout = {
         sm: {span: 8},
     },
     wrapperCol: {
-        xs: {span: 32},
-        sm: {span: 24},
+        xs: {span: 24},
+        sm: {span: 16},
     }
 };
 
@@ -92,12 +92,7 @@ function RegisterPage(props) {
                 } = props;
 
                 return (
-                    <div style={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        height: '100vh'
-                    }}>
+                    <div className="app">
                         <Form style={{minWidth: '350px'}} onSubmit={handleSubmit} {...formItemLayout}>
                             <Title level={3} style={{textAlign: 'center'}}>Sign Up</Title> 
                             
@@ -116,9 +111,10 @@ function RegisterPage(props) {
                                             : "text-input"
                                     }
                                 />
-                                {errors.email && touched.email && (
-                                    <div className="input-feedback">{errors.email}</div>
-                                )}
+                                {errors.email && touched.email 
+                                    ? <div className="input-feedback">{errors.email}</div>
+                                    : <div className="input-no-feedback">blank</div>
+                                }
                             </Form.Item>
                             <Form.Item required label="Name">
                                 <Input
@@ -135,9 +131,9 @@ function RegisterPage(props) {
                                             : "text-input"
                                     }
                                 />
-                                {errors.name && touched.name && (
-                                    <div className="input-feedback">{errors.name}</div>
-                                )}
+                                {errors.name && touched.name 
+                                    ? <div className="input-feedback">{errors.name}</div>
+                                    : <div className="input-no-feedback">blank</div>}
                             </Form.Item>
                             <Form.Item required label="Last Name">
                                 <Input
@@ -154,9 +150,10 @@ function RegisterPage(props) {
                                             : "text-input"
                                     }
                                 />
-                                {errors.lastName && touched.lastName && (
-                                    <div className="input-feedback">{errors.lastName}</div>
-                                )}
+                                {errors.lastName && touched.lastName 
+                                    ? <div className="input-feedback">{errors.lastName}</div>
+                                    : <div className="input-no-feedback">blank</div>
+                                }
                             </Form.Item>
                             <Form.Item required label="Password">
                                 <Input.Password
@@ -173,9 +170,10 @@ function RegisterPage(props) {
                                             : "text-input"
                                     }
                                 />
-                                {errors.password && touched.password && (
-                                    <div className="input-feedback">{errors.password}</div>
-                                )}
+                                {errors.password && touched.password 
+                                    ? <div className="input-feedback">{errors.password}</div>
+                                    : <div className="input-no-feedback">blank</div>
+                                }
                             </Form.Item>
                             <Form.Item required label="Confirm PW">
                                 <Input.Password
@@ -192,9 +190,10 @@ function RegisterPage(props) {
                                             : "text-input"
                                     }
                                 />
-                                {errors.confirmPassword && touched.confirmPassword && (
-                                    <div className="input-feedback">{errors.confirmPassword}</div>
-                                )}
+                                {errors.confirmPassword && touched.confirmPassword 
+                                    ? <div className="input-feedback">{errors.confirmPassword}</div>
+                                    : <div className="input-no-feedback">blank</div>
+                                }
                             </Form.Item>
 
                             <Form.Item {...tailFormItemLayout}>
