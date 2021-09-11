@@ -87,8 +87,8 @@ function RegisterPage(props) {
         >
             {props => {
                 const {
-                    values, touched, errors, dirty, isSubmitting,
-                    handleChange, handleBlur, handleSubmit, handleReset
+                    values, touched, errors, isSubmitting,
+                    handleChange, handleBlur, handleSubmit, 
                 } = props;
 
                 return (

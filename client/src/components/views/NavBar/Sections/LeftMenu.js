@@ -8,10 +8,10 @@ const MenuItem = Menu.Item;
 function LeftMenu({mode}) {
     return (
         <Menu mode={mode}>
-            <MenuItem key="mail">
+            <MenuItem key="home">
                 <a href="/">Home</a>
             </MenuItem>
-            <SubMenu title={<span>Blogs</span>}>
+            <SubMenu title={<span>Blogs</span>} key="blogs">
                 <MenuItemGroup title="Item 1">
                     <MenuItem key="setting:1">Option 1</MenuItem>
                     <MenuItem key="setting:2">Option 2</MenuItem>
