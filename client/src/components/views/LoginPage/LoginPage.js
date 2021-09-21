@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
+import { Link } from 'react-router-dom';
 import {Formik} from 'formik';
 import * as Yup from 'yup';
 
@@ -110,9 +111,12 @@ function LoginPage(props) {
                                 <Button type="primary" onClick={handleSubmit} disabled={isSubmitting} style={{minWidth: '100%'}}>Login</Button>
                                 <div style={{color: 'rgba(0,0,0,.50)', fontStyle: 'italic', marginTop: '5px'}}>
                                     New here? 
-                                    <Button type="link" href="/register" style={{
-                                        margin: '0', fontStyle: 'normal', padding: '8px'
-                                    }}>Register Now</Button>
+                                    <Link to="/register">
+                                        <Button type="link" style={{
+                                            margin: '0', fontStyle: 'normal', padding: '8px'
+                                        }}>Register Now</Button>
+                                    </Link>
+                                    
                                 </div>
                             </Form.Item>  
                         </Form>

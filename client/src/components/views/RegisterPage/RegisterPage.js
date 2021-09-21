@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {Formik} from 'formik';
 import * as Yup from 'yup';
 import moment from 'moment';
@@ -200,9 +201,11 @@ function RegisterPage(props) {
                                 <Button type="primary" onClick={handleSubmit} disabled={isSubmitting} style={{minWidth: '100%'}}>Register</Button>
                                 <div style={{color: 'rgba(0,0,0,.50)', fontStyle: 'italic', marginTop: '5px'}}>
                                     Already have an account? 
-                                    <Button type="link" href="/login" style={{
-                                        margin: '0', fontStyle: 'normal', padding: '8px'
-                                    }}>Login</Button>
+                                    <Link to="/login">
+                                        <Button type="link" style={{
+                                            margin: '0', fontStyle: 'normal', padding: '8px'
+                                        }}>Login</Button>
+                                    </Link>
                                 </div>
                             </Form.Item>
                         </Form>
