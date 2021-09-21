@@ -1,6 +1,6 @@
 import React from 'react';
 import {Menu} from 'antd';
-import {withRouter} from 'react-router-dom';
+import {withRouter, Link} from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux';
 import { logoutUser } from '../../../../_actions/user_actions';
 
@@ -25,15 +25,15 @@ function RightMenu(props) {
          {user.userData && !user.userData.isAuth
             ? <Menu mode={props.mode}>
                 <Menu.Item key="login">
-                    <a href="/login">Sign in</a>
+                    <Link to="/login">Sign in</Link>
                 </Menu.Item>
                 <Menu.Item key="register">
-                    <a href="/register">Sign up</a>
+                    <Link to="/register">Sign up</Link>
                 </Menu.Item>
             </Menu>
             : <Menu mode={props.mode}>
                 <Menu.Item key="logout">
-                    <a onClick={logoutHandler}>Log out</a>
+                    <Link onClick={logoutHandler}>Log out</Link>
                 </Menu.Item>
             </Menu>
          }
