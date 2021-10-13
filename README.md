@@ -1,25 +1,31 @@
 # Boiler - Plate
-Login/Register web with node.js(express), react.js.   
+login & register   
+basic layout(nav bar, content page, footer) 
 
-before start, create dev.js file in './server/config' and export your mongodb key.  
-
-    module.exports = {mongoURI: 'YOUR_MONGO_URI'}
-    
+create-react-app    
+![Generic badge](https://img.shields.io/badge/React-blue.svg)
+![Generic badge](https://img.shields.io/badge/Node-green.svg)
 ***
-### Start(dev mode)
-    npm install
-    npm run dev
 
+### Start(dev mode)
+create dev.js file in './server/config' and export your mongodb key.  
+```JS
+module.exports = {mongoURI: 'YOUR_MONGO_URI'}
+``` 
+```
+npm install
+npm run dev
+```
 ***
 ### modules
 |server|client|
 |---|---|
 |bcrypt: "^5.0.1"|antd: "^4.16.8"|
-|body-parser: "^1.19.0"|axios: "^0.21.1"|
-|cookie-parser: "^1.4.5"|formik: "^2.2.9"|
-|express: "^4.17.1"|http-proxy-middleware: "^2.0.1"|
-|jsonwebtoken: "^8.5.1"|moment: "^2.29.1"|
-|mongoose: "^5.13.3"|yup: "^0.32.9"|
+|cookie-parser: "^1.4.5"|axios: "^0.21.1"|
+|express: "^4.17.1"|formik: "^2.2.9"|
+|jsonwebtoken: "^8.5.1"|http-proxy-middleware: "^2.0.1"|
+|mongoose: "^5.13.3"|moment: "^2.29.1"|
+||yup: "^0.32.9"|
 ||react-router-dom: "^5.2.0"|
 ||react-redux: "^7.2.4"|
 ||redux: "^4.1.0"|
