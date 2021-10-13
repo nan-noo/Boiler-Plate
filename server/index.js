@@ -1,14 +1,17 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
+const cors = require('cors');
 
 const config = require('./config/key');
 
 const userRouter = require('./routes/users');
 
-const port = 5000;
+const port = process.env.PORT || 5000;
 const app = express();
 
+// avoid cors error
+app.use(cors());
 // application/json
 app.use(express.json());
 app.use(cookieParser());
