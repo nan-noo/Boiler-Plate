@@ -4,7 +4,8 @@ basic layout(nav bar, content page, footer)
 
 create-react-app    
 ![Generic badge](https://img.shields.io/badge/React-blue.svg)
-![Generic badge](https://img.shields.io/badge/Node-green.svg)
+![Generic badge](https://img.shields.io/badge/Node-yellow.svg)
+![Generic badge](https://img.shields.io/badge/MongoDB-green.svg)
 ***
 
 ### Start(dev mode)
